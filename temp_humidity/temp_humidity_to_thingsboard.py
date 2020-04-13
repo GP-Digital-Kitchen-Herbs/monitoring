@@ -15,8 +15,8 @@ while True:
         [temp,humidity] = grovepi.dht(sensor,blue)
         if math.isnan(temp) == False and math.isnan(humidity) == False:
             data = {'temperature' : temp, "humidity" : humidity}
+            sendTelemetry(data)
             print(data)
-        sendTelemetry(dict)
         time.sleep(60)
 
     except IOError:
