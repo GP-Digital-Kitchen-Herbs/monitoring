@@ -5,7 +5,7 @@ import requests
 import time
 import sys
 sys.path.insert(0, "/home/moxdlab/digital-kitchen-herbs/tel_helper")
-from tel_helper.tel_helper import sendTelemetry
+from tel_helper import sendTelemetry
 
 sensor = 8  # The port for the digital Sensor.
 blue = 0    # The Blue colored sensor.
