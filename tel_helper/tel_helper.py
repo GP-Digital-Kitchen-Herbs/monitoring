@@ -7,7 +7,7 @@ loaded = False
 
 def loadUrl():
     try:
-        with open('..\\tel_helper\\thingsboard-access.json') as access_json:
+        with open('../tel_helper/thingsboard-access.json') as access_json:
             data = json.load(access_json)
             token = data['token']
     except IOError as e:
