@@ -12,11 +12,11 @@
 </p>
 
 ## Über
-Gekaufte Küchenkräuter sind häufig sehr schwer lange am Leben zu erhalten. 
-In diesem Guided Project soll eine Lösung entwickelt werden, mitwelcher diese länger halten.
+Gekaufte Küchenkräuter sind häufig schwer lange am Leben zu erhalten. 
+In diesem Guided Project soll eine Lösung entwickelt werden, welche sich diesem Problem annimmt..
 
 Dafür sollen mit verschiedenen Sensoren die Kräuter überwacht werden und darauf aufbauend Empfehlungen gegeben werden.
-Die Dafür nötigen Skripte befinden sich in diesem Repository.
+Die dafür nötigen Skripte befinden sich in diesem Repository.
 
 ## Installation
 
@@ -45,6 +45,7 @@ Die Dafür nötigen Skripte befinden sich in diesem Repository.
 Um nun die Skripte ausführen zu können, müssen folgende Datein erstellt werden:
 
 1. ``thingsboard-access.json`` im ``tel_helper-Ordner``
+
 In diese Datei muss der Thingsboard-Token eingefügt werden.
     ```json
     {
@@ -53,6 +54,7 @@ In diese Datei muss der Thingsboard-Token eingefügt werden.
     ```
     
 2. ``conf.json`` im ``conf_helper-Ordner``
+
 In diese Datei wird die Konfiguration festgehalten. 
 Darunter zum Beispiel der Pin / Port an dem ein Sensor angeschlossen ist oder auch in welchem Intervall die Sensoren ausgelesen werden.
    ```json
@@ -60,14 +62,14 @@ Darunter zum Beispiel der Pin / Port an dem ein Sensor angeschlossen ist oder au
      "Parameter1": "Wert",
      "Paramter2": 123456789
    }
-    ```
+   ```
     
 Im zu wünschenden Skript kann einfach nach der Methode ``getValue`` gesucht werden, um die nötigen Parameter zu finden. 
 Bei fehlen eines Parameters  erscheint eine Ausgabe.
 
 ## Ausführung und Verwendung
 - Jedes Skript sollte immer nur ein Sensor oder eine Komponente ansprechen. 
-- Die Skripte sind nach Sensor sortiert.
+- Die Skripte sind nach Sensor / Komponenten sortiert.
 - Es können natürlich mehrere Skripte gleichzeitig ausgeführt werden.
 - Dabei sollte jedoch beachtet werden
     - Zwei Skripte sollten nicht den gleichen Sensor gleichzeitig ansprechen.
