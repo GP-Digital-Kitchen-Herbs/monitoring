@@ -86,7 +86,7 @@ Bei fehlen eines Parameters  erscheint eine Ausgabe.
     
    
 ## Verweise
-- [Literaturverzeichnis](https://github.com/Bettlaken/K_H_Literature
+- [Literaturverzeichnis](https://github.com/Bettlaken/K_H_Literature)
 - Bild von: https://undraw.co/
 
 ```
