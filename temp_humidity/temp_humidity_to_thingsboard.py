@@ -11,6 +11,7 @@ from conf_helper import getValue
 from datetime import datetime
 
 sensor = getValue("sensor_temp_hum")  # The port for the digital Sensor.
+sleep_time = getValue("sleep_in_seconds")
 blue = 0    # The Blue colored sensor.
 
 while True:
@@ -20,7 +21,7 @@ while True:
             data = {'temperature' : temp, "humidity" : humidity}
             sendTelemetry(data)
             print(str(datetime.now()) + ": " + str(data))
-        time.sleep(60)
+        time.sleep(sleep_time)
 
     except IOError:
         print ("Error")
