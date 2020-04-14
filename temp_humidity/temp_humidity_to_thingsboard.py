@@ -6,8 +6,11 @@ import time
 import sys
 sys.path.insert(0, "/home/moxdlab/digital-kitchen-herbs/tel_helper")
 from tel_helper import sendTelemetry
+sys.path.insert(0, "/home/moxdlab/digital-kitchen-herbs/conf_helper")
+from conf_helper import getValue
+from datetime import datetime
 
-sensor = 8  # The port for the digital Sensor.
+sensor = getValue("sensor_temp_hum")  # The port for the digital Sensor.
 blue = 0    # The Blue colored sensor.
 
 while True:
@@ -16,8 +19,9 @@ while True:
         if math.isnan(temp) == False and math.isnan(humidity) == False:
             data = {'temperature' : temp, "humidity" : humidity}
             sendTelemetry(data)
-            print(data)
+            print(str(datetime.now()) + ": " + str(data))
         time.sleep(60)
 
     except IOError:
         print ("Error")
+
