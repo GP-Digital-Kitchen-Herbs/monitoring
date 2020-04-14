@@ -86,7 +86,8 @@ Bei fehlen eines Parameters  erscheint eine Ausgabe.
     
    
 ## Verweise
-- [Literaturverzeichnis](https://github.com/Bettlaken/K_H_Literature)
+- [Literaturverzeichnis](https://github.com/Bettlaken/K_H_Literature
+- Bild von: https://undraw.co/
 
 ```
 Readme-Template: https://github.com/kylelobo/The-Documentation-Compendium/blob/master/en/README_TEMPLATES/Standard.md#deployment
