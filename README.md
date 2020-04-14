@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://raw.githubusercontent.com/aletutto/digital-kitchen-herbs/master/pictures/undraw_Gardening.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">GPA - Digital Kitchen Herbs</h3>
