@@ -1,4 +1,5 @@
 import json
+import sys
 
 def getValue(param):
     try:
@@ -6,9 +7,10 @@ def getValue(param):
             data = json.load(conf_json)
             return data[param]
     except IOError as e:
-        print('Error: Create a file "thingsboard-access.json" on the root of this folder.')
+        print('Error: Create a file "conf.json" on the root of this folder.')
         print(e)
         sys.exit()
-    except KeyError:
-        print('Error: Add the following key-value-pair: "token" : "[YOUR_ACCESS_TOKEN]"')
+    except KeyError as e:
+        print('Error: Add the following key-value-pair:' + param)
+        print(e)
         sys.exit()
