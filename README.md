@@ -29,33 +29,20 @@ Die dafür nötigen Skripte befinden sich in diesem Repository.
     ```bash
     pip install requests
     ```
-- Dieses Repo klonen. Am besten in
-    ```bash
-    /home/moxdlab/
-    ```
-    sodass folgende Struktur entsteht: 
-    ```bash
-    /home/moxdlab/digital-kitchen-herbs/..
-     ```
-- Sollte das Repo an eine andere Stelle geklont werden, so müssen die Pfade in den verschiedenen Skripten, welche auf den ``Tel_Helper`` oder den ``Conf_Helper`` angepasst werden.  
-(TODO: Zu relativen Pfaden ändern)
+- Dieses Repo klonen.
 
 ### Nötige Anpassung
 
 Um nun die Skripte ausführen zu können, müssen folgende Datein erstellt werden:
 
-1. ``thingsboard-access.json`` im ``tel_helper-Ordner``
-
-In diese Datei muss der Thingsboard-Token eingefügt werden.
+1. ``thingsboard-access.json`` im ``tel_helper-Ordner``: In diese Datei muss der Thingsboard-Token eingefügt werden.
     ```json
     {
     "token": "IHR_TOKEN"
     }
     ```
     
-2. ``conf.json`` im ``conf_helper-Ordner``
-
-In diese Datei wird die Konfiguration festgehalten. 
+2. ``conf.json`` im ``conf_helper-Ordner``: In diese Datei wird die Konfiguration festgehalten. 
 Darunter zum Beispiel der Pin / Port an dem ein Sensor angeschlossen ist oder auch in welchem Intervall die Sensoren ausgelesen werden.
    ```json
    {
