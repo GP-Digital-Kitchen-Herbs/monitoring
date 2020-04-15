@@ -1,9 +1,10 @@
+import os
+import sys
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), "../tel_helper"))
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), "../conf_helper"))
 import time
 import grovepi
-import sys
-sys.path.insert(0, "/home/moxdlab/digital-kitchen-herbs/tel_helper")
 from tel_helper import sendTelemetry
-sys.path.insert(0, "/home/moxdlab/digital-kitchen-herbs/conf_helper")
 from conf_helper import getValue
 
 sensor = getValue("sensor_light")

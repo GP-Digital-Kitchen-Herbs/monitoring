@@ -1,7 +1,8 @@
+import os
 import sys
-sys.path.insert(0, "/home/moxdlab/digital-kitchen-herbs/tel_helper")
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), "../tel_helper"))
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), "../conf_helper"))
 from tel_helper import sendTelemetry
-sys.path.insert(0, "/home/moxdlab/digital-kitchen-herbs/conf_helper")
 from conf_helper import getValue
 from datetime import datetime
 from grovepi import *
