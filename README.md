@@ -83,12 +83,8 @@ Bei fehlen eines Parameters  erscheint eine Ausgabe.
     ```bash
     python skript-name.py
     ```
-    
+- TODO: Eine Schnittstelle um mehrere Skripte gleichzeitig zu starten.    
    
 ## Verweise
 - [Literaturverzeichnis](https://github.com/Bettlaken/K_H_Literature)
 - Bild von: https://undraw.co/
-
-```
-Readme-Template: https://github.com/kylelobo/The-Documentation-Compendium/blob/master/en/README_TEMPLATES/Standard.md#deployment
-```
