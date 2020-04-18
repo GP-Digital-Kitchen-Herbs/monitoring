@@ -1,4 +1,4 @@
 data/
 *.pyc
-tel_helper/thingsboard-access.json
-conf_helper/conf.json
+conf.json
+.vscode/

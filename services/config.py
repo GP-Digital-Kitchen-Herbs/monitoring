@@ -2,10 +2,13 @@ import json
 import sys
 
 def getValue(param):
+    return getConfig()[param]
+
+def getConfig():
     try:
-        with open('../conf_helper/conf.json') as conf_json:
+        with open('conf.json') as conf_json:
             data = json.load(conf_json)
-            return data[param]
+            return data
     except IOError as e:
         print('Error: Create a file "conf.json" on the root of this folder.')
         print(e)

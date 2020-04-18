@@ -1,17 +1,16 @@
 import json
 import requests
 import sys
+import services.config as config
 
 url = ''
 loaded = False
 
 def loadUrl():
     try:
-        with open('../tel_helper/thingsboard-access.json') as access_json:
-            data = json.load(access_json)
-            token = data['token']
+        token = config.getValue('token')
     except IOError as e:
-        print('Error: Create a file "thingsboard-access.json" on the root of this folder.')
+        print('Error: Create the file "conf.json" on the project-root and add the field "token".')
         print(e)
         sys.exit()
     except KeyError:
