@@ -21,33 +21,52 @@ Die dafür nötigen Skripte befinden sich in diesem Repository.
 
 ## Installation
 
-- Ohne IoT-Kit (grob):
-    - [Python (3)](https://www.python.org/) installieren 
-    - GroovePi+ installieren: [Seeedstudio-Wiki](http://wiki.seeedstudio.com/GrovePi_Plus/#setup-the-software-on-the-raspberry-pi).
-    - Dann Schritte von Mit Iot-Kit
-- Mit IoT-Kit:
+### Python und GrovePi
+
+**INFORMATION**  
+Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstalliert. Diese Schritte sind nur notwendig, wenn kein Raspberry Pi der TH-Köln verwendet wird. 
+
+1. [Python 3](https://www.python.org/) installieren 
+2. GroovePi+ installieren: [Seeedstudio-Wiki](http://wiki.seeedstudio.com/GrovePi_Plus/#setup-the-software-on-the-raspberry-pi).
+
+### Monitoring
+1. Requests Packet installieren
     ```bash
     pip3 install requests
     ```
-- Dieses Repo klonen.
-- Die Konfigurationsdatei generieren:
+2. Dieses Repository klonen
+    ```bash
+    git clone https://github.com/GP-Digital-Kitchen-Herbs/digital-kitchen-herbs
+    ```
+3. Die Konfigurationsdatei generieren:
     ```bash
     python3 generate_config.py
     ```
     Dieser Schritt generiert die Datei `conf.json` und füllt sie mit den nötigen Werten. Beim erneuten Generieren werden alle bisherigen Werte überschrieben. Wenn ein Sensor deaktiviert werden soll, kann die Konfigurationsdatei neu generiert werden oder die entsprechende Zeile aus der `conf.json` entfernen.
-- Danach kann das Monitoring gestartet werden:
+
+4. Starten des Monitoring:
     ```bash
     python3 start.py
     ```
     Das Skript sendet die Sensorwerte der aktivierten Sensoren im definierten Interval an das Thingsboard Portal.
-- Mit folgendem Aufruf kann das Monitoring im Hintergrund gestartet werden, sodass es auch nach dem Trennen der SSH Session aktiv bleibt:
+
+### Hinweise zum Starten der Skripte via SSH
+Um das Monitoring im Hintergrund zu starten, sodass die Skripte nach der SSH Verbindung weiterhin laufen, kann eine Screen-Session gestartet werden.
+
+#### Starten der Screen-Session
+```bash
+screen -dmS monitoring python3 start.py
+```
+
+#### Stoppen der Screen Session
+1. Verbinden zur Screen Session
     ```bash
-    screen -dmS monitoring python3 start.py
+    screen -r monitoring
     ```
-- Um die Session zu stoppen muss zunächst wieder zu dieser verbunden werden:
-    1. 'screen -r monitoring'
-    2. Die Session beenden mit `Strg+A`, danach `k` und zuletzt `y`
+2. Beenden der Screen Session  
+`Strg+A`, danach `k` und zuletzt `y`
    
 ## Verweise
-- [Literaturverzeichnis](https://github.com/Bettlaken/K_H_Literature)
+- [Online Dokumentation](https://herbs-lit.jaykju.de/)
+- [Literaturverzeichnis Repositrory](https://github.com/Bettlaken/K_H_Literature)
 - Bild von: https://undraw.co/
