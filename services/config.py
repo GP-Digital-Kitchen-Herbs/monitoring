@@ -2,7 +2,13 @@ import json
 import sys
 
 def getValue(param):
-    return getConfig()[param]
+    try:
+        return getConfig()[param]
+    except KeyError as e:
+        print('Error: Add the following key-value-pair:' + param)
+        print(e)
+        sys.exit()
+
 
 def getConfig():
     try:
@@ -11,9 +17,5 @@ def getConfig():
             return data
     except IOError as e:
         print('Error: Create a file "conf.json" on the root of this folder.')
-        print(e)
-        sys.exit()
-    except KeyError as e:
-        print('Error: Add the following key-value-pair:' + param)
         print(e)
         sys.exit()

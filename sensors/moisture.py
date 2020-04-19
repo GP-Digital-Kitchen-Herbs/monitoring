@@ -1,10 +1,9 @@
 import time
 import grovepi
-import requests
 import services.telemetry as telemetry
 
 def monitorMoisture (currentConfig):
-    
+
     sleepTime = currentConfig["sleep_in_seconds"]
 
     while True:

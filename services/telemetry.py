@@ -1,4 +1,3 @@
-import json
 import requests
 import sys
 import services.config as config
@@ -12,9 +11,6 @@ def loadUrl():
     except IOError as e:
         print('Error: Create the file "conf.json" on the project-root and add the field "token".')
         print(e)
-        sys.exit()
-    except KeyError:
-        print('Error: Add the following key-value-pair: "token" : "[YOUR_ACCESS_TOKEN]"')
         sys.exit()
 
     global url
