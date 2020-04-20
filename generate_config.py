@@ -1,55 +1,52 @@
 import json
+import yaml
+import json
+import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+group = parser.add_mutually_exclusive_group()
+group.add_argument("-c", "--change", nargs="+", help="change values in the config", required=False)
+group.add_argument("-k", "--keep", nargs="+", help="keep values in the config", required=False)
+args = parser.parse_args()
 
 if __name__ == "__main__":
-
     config = {}
     print("Tool to generate the required config file.")
-    print("Please enter your thingsboard access token:")
 
-    temp = str(input())
-    if temp:
-        config["token"] = temp
-    else:
-        while not temp:
-            print("The access token is required")
+    with open('generate_config.yaml', 'r') as generator_config_yaml:
+        generator_config = yaml.safe_load(generator_config_yaml)
+
+    with open('conf.json') as conf_json:
+        old_config = json.load(conf_json)
+
+    for key in generator_config.keys():
+        if ((args.keep and key in args.keep) or (args.change and key not in args.change)) and key in old_config:
+            config[key] = old_config[key]
+            continue
+
+        type = generator_config.get(key).get("type")
+        temp = None
+
+        if not generator_config.get(key).get("optional"):
+            while not temp:
+                print()
+                print(generator_config.get(key).get("description"), "(required)")
+                temp = str(input())
+
+        else:
+            print()
+            print(generator_config.get(key).get("description"), "(optional, leave empty to disable)")
             temp = str(input())
 
-        config["token"] = temp
-
-    print("Please enter the interval between transmissions, the default is 60 (in seconds)")
-    temp = str(input())
-
-    if temp:
-        config["sleep_in_seconds"] = int(temp)
-    else:
-        print("Using 60 seconds")
-        config["sleep_in_seconds"] = 60
-
-
-    print("Please enter light sensor port (leave empty to disable)")
-    temp = str(input())
-    
-    if temp:
-        config["sensor_light"] = int(temp)
-    else:
-        print("Light sensor disabled")
-
-    print("Please enter moisture sensor port (leave empty to disable)")
-    temp = str(input())
-    
-    if temp:
-        config["sensor_moisture"] = int(temp)
-    else:
-        print("Moisture sensor disabled")
-
-    print("Please enter temperature and humidity sensor port (leave empty to disable)")
-    temp = str(input())
-    if temp:
-        config["sensor_temp_hum"] = int(temp)
-    else:
-        print("Temperature and humidity sensor disabled")
+        if temp:
+            if type == "Number":
+                temp = int(temp)
+            config[key] = temp
+            print("Value: ", temp)
+        else:
+            print("disabled")
 
     print(config)
-
     with open('conf.json', 'w') as outfile:
         json.dump(config, outfile)

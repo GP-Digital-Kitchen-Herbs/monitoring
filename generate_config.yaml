@@ -1,0 +1,20 @@
+token:
+  description: Please enter your thingsboard access token.
+  type: String
+  optional: False
+sleep_in_seconds:
+  description: Please enter the interval between transmissions.
+  type: Number
+  optional: False
+sensor_light:
+  description: Please enter light sensor port.
+  type: Number
+  optional: True
+sensor_moisture:
+  description: Please enter moisture sensor port.
+  type: Number
+  optional: True
+sensor_temp_hum:
+  description: Please enter temperature and humidity sensor port.
+  type: Number
+  optional: True

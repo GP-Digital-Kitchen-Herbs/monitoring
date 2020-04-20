@@ -42,8 +42,16 @@ Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstallie
     ```bash
     python3 generate_config.py
     ```
-    Dieser Schritt generiert die Datei `conf.json` und füllt sie mit den nötigen Werten. Beim erneuten Generieren werden alle bisherigen Werte überschrieben. Wenn ein Sensor deaktiviert werden soll, kann die Konfigurationsdatei neu generiert werden oder die entsprechende Zeile aus der `conf.json` entfernen.
-
+    Dieser Schritt generiert die Datei `conf.json` und füllt sie mit den nötigen Werten. Beim erneuten Generieren werden alle bisherigen Werte überschrieben. 
+    Wenn ein Sensor deaktiviert werden soll, kann die Konfigurationsdatei neu generiert werden oder die entsprechende Zeile aus der `conf.json` entfernen. Bei Bedarf können Werte aus der bisherigen Konfiguration mittels des folgenden zusätzlichen Parameters in die neue Konfiguration übernommen werden: 
+    ```bash 
+    -k NAME_DES_SCHLÜSSELS [WEITERE SCHLÜSSEL]
+    ```
+   Andersherum können mittels des folgenden zusätzlichen Parameters nur bestimmte Schlüssel verändert werden:
+   ```bash 
+    -c NAME_DES_SCHLÜSSELS [WEITERE SCHLÜSSEL]
+   ```
+   
 4. Starten des Monitoring:
     ```bash
     python3 start.py
