@@ -37,7 +37,7 @@ Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstallie
     ```
 2. Dieses Repository klonen
     ```bash
-    git clone https://github.com/GP-Digital-Kitchen-Herbs/digital-kitchen-herbs
+    git clone https://github.com/GP-Digital-Kitchen-Herbs/monitoring
     ```
 3. Die Konfigurationsdatei generieren:
     ```bash
