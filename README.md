@@ -32,8 +32,7 @@ Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstallie
 ### Monitoring
 1. Pakete installieren
     ```bash
-    pip3 install requests
-    pip3 install PyYAML
+    pip3 install -r requirements.txt
     ```
 2. Dieses Repository klonen
     ```bash
