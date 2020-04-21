@@ -17,8 +17,11 @@ if __name__ == "__main__":
     with open('generate_config.yaml', 'r') as generator_config_yaml:
         generator_config = yaml.safe_load(generator_config_yaml)
 
-    with open('conf.json') as conf_json:
-        old_config = json.load(conf_json)
+    try:
+        with open('conf.json') as conf_json:
+            old_config = json.load(conf_json)
+    except:
+        old_config = "{}"
 
     for key in generator_config.keys():
         if ((args.keep and key in args.keep) or (args.change and key not in args.change)) and key in old_config:
