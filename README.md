@@ -30,9 +30,10 @@ Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstallie
 2. GroovePi+ installieren: [Seeedstudio-Wiki](http://wiki.seeedstudio.com/GrovePi_Plus/#setup-the-software-on-the-raspberry-pi).
 
 ### Monitoring
-1. Requests Packet installieren
+1. Pakete installieren
     ```bash
     pip3 install requests
+    pip3 install PyYAML
     ```
 2. Dieses Repository klonen
     ```bash
