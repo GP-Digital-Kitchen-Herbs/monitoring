@@ -30,15 +30,20 @@ Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstallie
 2. GroovePi+ installieren: [Seeedstudio-Wiki](http://wiki.seeedstudio.com/GrovePi_Plus/#setup-the-software-on-the-raspberry-pi).
 
 ### Monitoring
-1. Pakete installieren
-    ```bash
-    pip3 install -r requirements.txt
-    ```
-2. Dieses Repository klonen
+1. Dieses Repository klonen
     ```bash
     git clone https://github.com/GP-Digital-Kitchen-Herbs/monitoring
     ```
-3. Die Konfigurationsdatei generieren:
+2. In das soeben geklonte Repository navigieren
+    ```bash
+    cd monitoring
+    ```
+3. Pakete installieren
+    ```bash
+    pip3 install -r requirements.txt
+    ```
+
+4. Die Konfigurationsdatei generieren:
     ```bash
     python3 generate_config.py
     ```
@@ -52,7 +57,7 @@ Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstallie
     -c NAME_DES_SCHLÜSSELS [WEITERE SCHLÜSSEL]
    ```
    
-4. Starten des Monitoring:
+5. Starten des Monitoring:
     ```bash
     python3 start.py
     ```
