@@ -56,8 +56,13 @@ Python und GrovePi sind bereits auf den Raspberry Pi's des IoT-Kits vorinstallie
    ```bash 
     -c NAME_DES_SCHLÜSSELS [WEITERE SCHLÜSSEL]
    ```
-   
-5. Starten des Monitoring:
+
+5. **Optional wenn der Ultrasonic-Ranger nicht verwendet wird**: Um den Ultrasonic-Ranger zu kalibieren muss folgender Befehl ausgeführt werden:
+    ```bash 
+    python3 generate_config.py -cu
+    ```
+
+6. Starten des Monitoring:
     ```bash
     python3 start.py
     ```

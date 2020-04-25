@@ -18,3 +18,7 @@ sensor_temp_hum:
   description: Please enter temperature and humidity sensor port.
   type: Number
   optional: True
+sensor_ultra_sonic:
+  description: Please enter ultra sonic ranger port. Don't forget to calibrate the distance afterwards!
+  type: Number
+  optional: True

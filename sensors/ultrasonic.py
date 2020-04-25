@@ -1,25 +1,26 @@
-import os
-import sys
-sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), "../tel_helper"))
-sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), "../conf_helper"))
-from tel_helper import sendTelemetry
-from conf_helper import getValue
+import services.telemetry as telemetry
 from datetime import datetime
 from grovepi import *
 
-sensor = getValue("sensor_ultra_sonic")
-sleep_time = getValue("sleep_in_seconds")
+def monitoreDistance(currentConfig):
 
-while True:
-    try:
-        value = ultrasonicRead(sensor)
-        print(str(datetime.now()) + ": " + str(value))
-        dict = {
-            "Distance": value
-        }
-        sendTelemetry(dict)
-        time.sleep(sleep_time)
-    except TypeError:
-        print("TE, Error")
-    except IOError:
-        print("IO, Error")
+    sleep_time = currentConfig("sleep_in_seconds")
+
+    while True:
+        try:
+            sendDistance(currentConfig)
+            time.sleep(sleep_time)
+        except KeyboardInterrupt:
+            break
+        except IOError:
+            print("IO, Error")
+
+def sendDistance(currentConfig):
+    sensor = currentConfig["sensor_ultra_sonic"]
+    if currentConfig["null_distance"]:
+        sensor_value = int(currentConfig["null_distance"]) - ultrasonicRead(sensor)
+        print('distance', sensor_value)
+        data = {'distance' : sensor_value}
+        telemetry.sendTelemetry(data)
+    else:
+        print("Please calibrate the Ultrasonic-Ranger")

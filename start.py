@@ -2,6 +2,7 @@ import sys
 import sensors.moisture as moisture
 import sensors.light as light
 import sensors.temp_humidity as temp_humidity
+import sensors.ultrasonic as ultrasonic
 import services.config as config
 from datetime import datetime
 import time
@@ -13,6 +14,7 @@ if __name__ == "__main__":
 
     if not "sensor_moisture" in currentConfig and \
        not "sensor_light" in currentConfig and \
+       not "sensor_ultra_sonic" in currentConfig and \
        not "sensor_temp_hum" in currentConfig:
         print('No sensor configurated in config.json. Run "generate_config.py" script.')
         sys.exit()
@@ -29,6 +31,9 @@ if __name__ == "__main__":
 
             if "sensor_temp_hum" in currentConfig:
                 temp_humidity.sendTempHumidity(currentConfig)
+
+            if "sensor_ultra_sonic" in currentConfig:
+                ultrasonic.sendDistance(currentConfig)
                         
             print('-------')
             time.sleep(sleepTime)
