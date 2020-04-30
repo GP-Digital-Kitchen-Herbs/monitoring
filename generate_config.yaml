@@ -7,18 +7,18 @@ sleep_in_seconds:
   type: Number
   optional: False
 sensor_light:
-  description: Please enter light sensor port.
+  description: Please enter light sensor port (analog).
   type: Number
   optional: True
 sensor_moisture:
-  description: Please enter moisture sensor port.
+  description: Please enter moisture sensor port (analog).
   type: Number
   optional: True
 sensor_temp_hum:
-  description: Please enter temperature and humidity sensor port.
+  description: Please enter temperature and humidity sensor port (digital).
   type: Number
   optional: True
 sensor_ultra_sonic:
-  description: Please enter ultra sonic ranger port. Don't forget to calibrate the distance afterwards!
+  description: Please enter ultra sonic ranger port (digital). Don't forget to calibrate the distance afterwards!
   type: Number
   optional: True

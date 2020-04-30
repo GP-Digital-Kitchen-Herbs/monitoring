@@ -26,6 +26,9 @@ def generate_config():
             config[key] = old_config[key]
             continue
 
+        if (args.change and key not in args.change and key not in old_config):
+            continue
+
         type = generator_config.get(key).get("type")
         temp = None
 
@@ -79,7 +82,6 @@ def write_current_config(config):
         json.dump(config, outfile)
 
 if __name__ == "__main__":
-    print(args.calibrateultrasonic)
     if args.calibrateultrasonic:
         calibrate_ultrasonic()
     else:
