@@ -2,27 +2,29 @@ import time
 import grovepi
 import services.telemetry as telemetry
 
-def monitorLight(currentConfig):
 
-    sleepTime = currentConfig["sleep_in_seconds"]
+def monitor_light(current_config):
+    sleep_time = current_config["sleep_in_seconds"]
 
     while True:
         try:
-            sendLight(currentConfig)
+            send_light(current_config)
 
-            time.sleep(sleepTime)
+            time.sleep(sleep_time)
         except KeyboardInterrupt:
-                break
+            break
         except IOError:
-            print ("Error")
-            time.sleep(sleepTime)
+            print("Error")
+            time.sleep(sleep_time)
 
-def sendLight(currentConfig):
-    sensor = currentConfig["sensor_light"]
+
+def send_light(current_config):
+    telemetry.send_telemetry(get_light(current_config))
+
+
+def get_light(current_config):
+    sensor = current_config["sensor_light"]
     grovepi.pinMode(sensor, "INPUT")
     sensor_value = grovepi.analogRead(sensor)
     print('light:', sensor_value)
-
-    data = {'light' : sensor_value}
-    telemetry.sendTelemetry(data)
-    
+    return {'light': sensor_value}

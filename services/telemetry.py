@@ -5,9 +5,10 @@ import services.config as config
 url = ''
 loaded = False
 
-def loadUrl():
+
+def load_url():
     try:
-        token = config.getValue('token')
+        token = config.get_value('token')
     except IOError as e:
         print('Error: Create the file "conf.json" on the project-root and add the field "token".')
         print(e)
@@ -19,7 +20,7 @@ def loadUrl():
     loaded = True
 
 
-def sendTelemetry(values):
-    if loaded == False:
-        loadUrl()
+def send_telemetry(values):
+    if loaded is False:
+        load_url()
     requests.post(url=url, data=str(values))

@@ -4,31 +4,37 @@ import time
 import services.telemetry as telemetry
 
 
-def monitorTempHumidity(currentConfig):
-    sleepTime = currentConfig["sleep_in_seconds"]
+def monitor_temp_humidity(current_config):
+    sleep_time = current_config["sleep_in_seconds"]
 
     while True:
         try:
-            sendTempHumidity(currentConfig)
-            time.sleep(sleepTime)
+            send_temp_humidity(current_config)
+            time.sleep(sleep_time)
 
         except KeyboardInterrupt:
             break
         except IOError:
             print("Error")
-            time.sleep(sleepTime)
+            time.sleep(sleep_time)
 
 
-def sendTempHumidity(currentConfig):
-    sensor = currentConfig["sensor_temp_hum"]  # The port for the digital Sensor.
-    sensorType = 0  # The Blue colored sensor. White is 1
+def send_temp_humidity(current_config):
+    data = get_temp_humidity(current_config)
+    if (data):
+        telemetry.send_telemetry(data)
 
-    [temp, humidity] = grovepi.dht(sensor, sensorType)
 
-    if math.isnan(temp) == False and math.isnan(humidity) == False:
+def get_temp_humidity(current_config):
+    sensor = current_config["sensor_temp_hum"]  # The port for the digital Sensor.
+    sensor_type = 0  # The Blue colored sensor. White is 1
+
+    [temp, humidity] = grovepi.dht(sensor, sensor_type)
+
+    if math.isnan(temp) is False and math.isnan(humidity) is False:
         print('temp:', temp)
         print('humidity:', humidity)
-        data = {'temperature': temp, "humidity": humidity}
-        telemetry.sendTelemetry(data)
+        return {'temperature': temp, "humidity": humidity}
     else:
         print('Invalid temperature and humidity measurement')
+        return None

@@ -2,25 +2,29 @@ import time
 import grovepi
 import services.telemetry as telemetry
 
-def monitorMoisture (currentConfig):
 
-    sleepTime = currentConfig["sleep_in_seconds"]
+def monitor_moisture(current_config):
+    sleep_time = current_config["sleep_in_seconds"]
 
     while True:
         try:
-            sendMoisture(currentConfig)
+            send_moisture(current_config)
 
-            time.sleep(sleepTime)
+            time.sleep(sleep_time)
 
         except KeyboardInterrupt:
             break
         except IOError:
-            print ("Error")
-            time.sleep(sleepTime)
+            print("Error")
+            time.sleep(sleep_time)
 
-def sendMoisture(currentConfig):
-    sensor = currentConfig["sensor_moisture"]
+
+def send_moisture(current_config):
+    telemetry.send_telemetry(get_moisture(current_config))
+
+
+def get_moisture(current_config):
+    sensor = current_config["sensor_moisture"]
     sensor_value = grovepi.analogRead(sensor)
     print('moisture:', sensor_value)
-    data = {'moisture' : sensor_value}
-    telemetry.sendTelemetry(data)
+    return {'moisture': sensor_value}

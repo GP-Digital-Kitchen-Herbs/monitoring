@@ -1,16 +1,17 @@
 import json
 import sys
 
-def getValue(param):
+
+def get_value(param):
     try:
-        return getConfig()[param]
+        return get_config()[param]
     except KeyError as e:
         print('Error: Add the following key-value-pair:' + param)
         print(e)
         sys.exit()
 
 
-def getConfig():
+def get_config():
     try:
         with open('conf.json') as conf_json:
             data = json.load(conf_json)

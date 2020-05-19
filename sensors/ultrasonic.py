@@ -1,5 +1,5 @@
+import time
 import services.telemetry as telemetry
-from datetime import datetime
 from grovepi import *
 from statistics import median
 
@@ -8,31 +8,36 @@ INTERVAL = 15
 # Number of measurements
 MEASUREMENT_COUNT = 3
 
-def monitoreDistance(currentConfig):
 
-    sleep_time = currentConfig("sleep_in_seconds")
+def monitor_distance(current_config):
+    sleep_time = current_config("sleep_in_seconds")
 
     while True:
         try:
-            sendDistance(currentConfig)
+            send_distance(current_config)
             time.sleep(sleep_time)
         except KeyboardInterrupt:
             break
         except IOError:
             print("IO, Error")
 
-def sendDistance(currentConfig):
-    sensor = currentConfig["sensor_ultra_sonic"]
-    if currentConfig["null_distance"]:
+
+def send_distance(current_config):
+    data = get_distance(current_config)
+    if data:
+        telemetry.send_telemetry(data)
+
+
+def get_distance(current_config):
+    sensor = current_config["sensor_ultra_sonic"]
+    if current_config["null_distance"]:
         sensor_values = []
         for i in range(MEASUREMENT_COUNT):
-            sensor_values.append(int(currentConfig["null_distance"]) - ultrasonicRead(sensor))
+            sensor_values.append(int(current_config["null_distance"]) - ultrasonicRead(sensor))
             time.sleep(INTERVAL)
         sensor_value = median(sensor_values)
         print('water:', sensor_value, 'cm')
-        data = {'water' : sensor_value}
-        telemetry.sendTelemetry(data)
+        return {'water': sensor_value}
     else:
         print("Please calibrate the Ultrasonic-Ranger")
-    
-
+        return None
