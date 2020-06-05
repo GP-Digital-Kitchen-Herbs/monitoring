@@ -22,3 +22,7 @@ sensor_ultra_sonic:
   description: Please enter ultra sonic ranger port (digital). Don't forget to calibrate the distance afterwards!
   type: Number
   optional: True
+report_display:
+  description: Please enter "1" to use display.
+  type: Number
+  optional: True
